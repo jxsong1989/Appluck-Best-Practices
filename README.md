@@ -55,7 +55,7 @@ Best practices for Appluck in Unity games.
   Appluck Url 格式为 https://aios.soinluck.com/scene?sk=xxxxxxxxxxxxxx&lzdid={gaid}
   + xxxxxxxxxxxxxx为广告位ID
   + gaid为谷歌广告ID，请将{gaid}整体替换为用户的gaid
-  + 最终打开的url如： https://aios.soinluck.com/scene?sk=q842c2e079a1b32c8&gaid=228b9b29-784f-4181-bbc9-28cd14f672f4
+  + 最终打开的url如： https://aios.soinluck.com/scene?sk=q842c2e079a1b32c8&lzdid=228b9b29-784f-4181-bbc9-28cd14f672f4
 + WebView对Url协议头的支持（使用LightWebView时可跳过）
   + market链接
     ```java
