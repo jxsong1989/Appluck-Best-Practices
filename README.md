@@ -58,9 +58,49 @@ Best practices for Appluck in Unity games.
   + 最终打开的url如： https://aios.soinluck.com/scene?sk=q842c2e079a1b32c8&gaid=228b9b29-784f-4181-bbc9-28cd14f672f4
 + WebView对Url协议头的支持（使用LightWebView时可跳过）
   + market链接
+    ```java
+    if (url.startsWith("market:")
+                || url.startsWith("https://play.google.com/store/")
+                || url.startsWith("http://play.google.com/store/")) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        if (url.startsWith("market://details?id=")) {
+            final String replace = url.replace("market://details", "https://play.google.com/store/apps/details");
+            Log.d("LightWebview", "marketUrl replace: \n" + url + "\n" + replace);
+            intent.setData(Uri.parse(replace));
+        } else {
+            intent.setData(Uri.parse(url));
+        }
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+        return true;
+    }
+    ```
   + apk下载
+    ```java
+    webView.setDownloadListener((url, userAgent, contentDisposition, mimetype, contentLength) -> {
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    });
+    ```
   + http链接
-  + 其他 
+    + AndroidManifest.xml中application节点添加配置
+      ```java
+      android:usesCleartextTraffic="true"
+      ```
+    + 如不支持http，请与Appluck运营说明
+  + 其他
+    ```java
+    Intent intent = new Intent(Intent.ACTION_VIEW);
+    ActivityInfo activityInfo = intent.resolveActivityInfo(context.getPackageManager(), 0);
+    if (activityInfo.exported) {
+        intent.setData(Uri.parse(url));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+    ``` 
+    
 + WebView网页后退的支持（使用LightWebView时可跳过）
   请支持网页的后退而不是直接关闭页面，参考代码
   ```java
