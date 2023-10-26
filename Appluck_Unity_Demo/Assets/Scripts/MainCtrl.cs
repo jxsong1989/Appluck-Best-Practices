@@ -33,7 +33,7 @@ public class MainCtrl : MonoBehaviour
     private int reward_times = 0;
 
     //appluck 提供的链接，这里是测试链接，请替换为分配的链接
-    private const string appluck_url = "https://aios.soinluck.com/scene?sk=q842c2e079a1b32c8";
+    private const string appluck_url = "https://aios.soinluck.com/scene?sk=q842c2e079a1b32c8&lzdid=228b9b29-784f-4181-bbc9-28cd14f672f4";
 
     //Max配置
     private MaxConfig maxConfig;
