@@ -22,7 +22,16 @@ Best practices for Appluck in Unity games.
 + ### LightWebView
   轻量AndroidWebView工程，通过Android原生WebView打开网页，也可以直接使用Unity插件: https://assetstore.unity.com/packages/slug/264898
   ![avatar](https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/blob/main/doc/back.jpg)
-  1：返回按钮，点击触发网页后退，无法后退时触发页面关闭
+  + 1：返回按钮，点击触发网页后退，无法后退时触发页面关闭
+    
+  ```c#
+  LightWebviewAndroid.instance.open(appluck_url, CloseMode.back);
+  ```
 
   ![avatar](https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/blob/main/doc/close.jpg)
-  1：关闭按钮，点击触发页面关闭，无论网页是否可后退
+  + 1：关闭按钮，点击触发页面关闭，无论网页是否可后退
+
+  ```c#
+  LightWebviewAndroid.instance.open(appluck_url, CloseMode.close);
+  ```
+ 
