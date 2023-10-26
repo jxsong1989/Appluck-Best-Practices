@@ -45,10 +45,83 @@ Best practices for Appluck in Unity games.
     ```
 +  在应用内合适的位置放置Appluck入口，在合适的时机打开Appluck页面
 
-## AB Test
+## AB Test，
+分流部分用户接入Appluck，与未接入的用户数据进行对比，以找到最佳的接入位置和时机
 
 ## 集成测试
 
 ## 常见问题
++ Appluck Url 拼接问题
+  Appluck Url 格式为 https://aios.soinluck.com/scene?sk=xxxxxxxxxxxxxx&lzdid={gaid}
+  + xxxxxxxxxxxxxx为广告位ID
+  + gaid为谷歌广告ID，请将{gaid}整体替换为用户的gaid
+  + 最终打开的url如： https://aios.soinluck.com/scene?sk=q842c2e079a1b32c8&gaid=228b9b29-784f-4181-bbc9-28cd14f672f4
++ WebView对Url协议头的支持（使用LightWebView时可跳过）
+  + market链接
+  + apk下载
+  + http链接
+  + 其他 
++ WebView网页后退的支持（使用LightWebView时可跳过）
+  请支持网页的后退而不是直接关闭页面，参考代码
+  ```java
+  @Override
+  public void onBackPressed() {
+      if (webView == null) {
+          super.onBackPressed();
+          return;
+      }
+      if (webView.canGoBack()) {
+          webView.goBack();
+      } else {
+          super.onBackPressed();
+      }
+  }
+  ```
+  
++ WebView打开浏览器的支持（使用LightWebView时可跳过）
+  一些特殊的广告需要通过浏览器打开，Appluck约定了url参数中包含参数lz_open_browser=1时需跳出应用通过浏览器打开，参考代码
+  ```java
+   webView.setWebViewClient(new WebViewClient() {
+      @Override
+      public boolean shouldOverrideUrlLoading(@NonNull WebView view, @NonNull WebResourceRequest request) {
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+              String url = request.getUrl().toString();
+              try {
+                  if (url.contains("lz_open_browser=1")) {
+                       if (isAppInstalled(context, "com.android.chrome")) {
+                          // 创建一个 Intent，指定 ACTION_VIEW 动作和 URL
+                          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                          // 指定要使用的浏览器的包名
+                          intent.setPackage("com.android.chrome"); // Chrome 浏览器的包名
+                          // 启动 Chrome 浏览器来处理链接
+                          context.startActivity(intent);
+                      } else {
+                          // 如果没有安装 Chrome 浏览器，使用系统默认浏览器打开链接
+                          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                          // 启动默认浏览器来处理链接
+                          context.startActivity(intent);
+                      }
+                      return true;
+                  }
+              } catch (Throwable e) {
+                  return true;
+              }
+          }
+          return super.shouldOverrideUrlLoading(view, request);
+      }
+  });
+
+  public static boolean isAppInstalled(Context context, String packageName) {
+      if (packageName == null || packageName.length() <= 0) {
+          return false;
+      }
+      try {
+          context.getPackageManager().getPackageInfo(packageName, 0);
+          return true;
+      } catch (PackageManager.NameNotFoundException e) {
+          return false;
+      }
+  }
+  ```
   
  
