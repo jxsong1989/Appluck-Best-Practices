@@ -84,12 +84,6 @@ Best practices for Appluck in Unity games.
         startActivity(intent);
     });
     ```
-  + http链接
-    + AndroidManifest.xml中application节点添加配置
-      ```java
-      android:usesCleartextTraffic="true"
-      ```
-    + 如不支持http，请与Appluck运营说明
   + 其他
     ```java
     Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -100,7 +94,12 @@ Best practices for Appluck in Unity games.
         context.startActivity(intent);
     }
     ``` 
-    
+ + WebView对http链接的支持
+    + AndroidManifest.xml中application节点添加配置
+      ```java
+      android:usesCleartextTraffic="true"
+      ```
+    + 如明确不支持http，请与Appluck运营说明
 + WebView网页后退的支持（使用LightWebView时可跳过）
   请支持网页的后退而不是直接关闭页面，参考代码
   ```java
