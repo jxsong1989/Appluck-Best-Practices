@@ -34,4 +34,17 @@ Best practices for Appluck in Unity games.
   ```c#
   LightWebviewAndroid.instance.open(appluck_url, CloseMode.close);
   ```
+
+## 怎么接
++  从Appluck运营处获取对应的广告位链接
++  接入LightWebView（使用其他方案则跳过该步骤）
+  + 使用unity应用商店插件： https://assetstore.unity.com/packages/slug/264898 ，下载unitypackage文件并导入工程即可通过以下代码打开网页
+    ```c#
+    LightWebviewAndroid.instance.open(appluck_url, CloseMode.back);
+    LightWebviewAndroid.instance.open(appluck_url, CloseMode.close);
+    ```
++  在应用内合适的位置放置Appluck入口，在合适的时机打开Appluck页面
+
+## 常见问题
+  
  
