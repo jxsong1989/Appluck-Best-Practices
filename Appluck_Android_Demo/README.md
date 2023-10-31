@@ -1,5 +1,4 @@
-# Appluck最佳实践-Unity版本
-
+# Appluck最佳实践-Android版本
 
 本项目为Appluck集成的最佳实践，开发者可借鉴参考。
 若有疑问请与对接人员联系。
@@ -63,17 +62,15 @@ Appluck为开发者提供新的h5变现解决方案，在不影响游戏原有�
 
 <br/>
 
-## Appluck_Unity_Demo说明
-UnityDemo工程，展示了Appluck建议的接入方式、时机和位置
+## Appluck_Android_Demo说明
+AndroidDemo工程，展示了Appluck建议的接入方式、时机和位置
 ![avatar](https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/blob/main/doc/index.jpg)
 
-这是一个典型的游戏场景，包含了游戏积分(Gold部分)、增加积分的按钮(Add Gold) 以及几个触发广告的入口
+这是一个典型的App场景，包含了浮标位入口、触发激励视频的按钮
 
-#### 1. 动态浮标位
+#### 1. 浮标位
 
-一种典型的场景，开发者希望用户在完成某些关键步骤之后才开始展现影响用户注意力的广告。
-demo中用户金币达到10之后会显示此位置，点击后进入Appluck活动页面。
-开发者可以根据实际情况控制入口的显示，还可以使浮标动起来，如游戏完成某些步骤后界面中飞过宝箱吸引用户点击。
+此处使用了Appluck提供的浮标素材获取API 来动态获取推荐的浮标素材，并保持30秒的替换频率。这样可以极致优化素材的点击率。如有特殊要求，您也可以使用固定的素材。
 
 #### 2. 激励视频
 
@@ -85,9 +82,6 @@ demo中也将广告加载失败的处理改为打开Appluck活动。
 这样的替换完全是增量收入，可放心修改。
 
 
-#### 3. 静态浮标位
-
-若没有其他考虑，可以将浮标固定在某处。
 
 
 <br/>
@@ -96,29 +90,9 @@ demo中也将广告加载失败的处理改为打开Appluck活动。
 
 Appluck是由h5实现的活动集合，在游戏中打开Appluck时需要使用WebView承载。由于Appluck上游广告预算的丰富多样，WebView本身需要对一些跳转的协议进行支持，否则会出现跳转广告失败的问题。除此之外，还需要对用户的后退行为等做一些响应，防止误操作退出WebView。
 
-在实际集成过程中，您有两种方式可以选择
-
-### 1. 使用已封装好的WebView插件
-
-建议使用Unity插件 LightWebView.  https://assetstore.unity.com/packages/slug/264898
-
-此插件已兼容Appluck的所有跳转协议。插件源码见此项目的LightWebView文件夹。
-
-例：
+在实际集成过程中，您需要自行封装WebView，以完成Appluck必须的一些兼容。
 
 
-```c#
-// 先获取用户的gaid，替换掉广告位链接中的{gaid}宏，得到url
-// 使用LightWebviewAndroid提供的方法打开url 。 
-// 注意：关闭模式选择了CloseMode.back，即用户使用左滑屏幕/软键盘后退等操作时优先触发网页的后退，当后退到最上层时才会关掉WebView
-LightWebviewAndroid.instance.open(url, CloseMode.back);
-```
-
-
-
-### 2. 自行封装WebView或使用其他第三方WebView插件
-
-在此情况下需要完成Appluck必须的一些兼容。
 
 #### 兼容要求及实现方式
 
@@ -233,8 +207,6 @@ LightWebviewAndroid.instance.open(url, CloseMode.back);
 
 
 
-
-
 由于内容较多，Appluck提供了测试方案
 
 #### 兼容测试
@@ -246,7 +218,6 @@ LightWebviewAndroid.instance.open(url, CloseMode.back);
 1. 传参测试 - 网页尝试读取您的传参，若传参格式有误会有提醒。
 
 2. 跳转测试 - 提供了多种典型跳转方式的链接，逐一点击并确认得到正确的跳转结果。
-
 
 
 
