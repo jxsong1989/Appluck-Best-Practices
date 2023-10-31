@@ -64,7 +64,7 @@ Appluck为开发者提供新的h5变现解决方案，在不影响游戏原有�
 
 ## Appluck_Android_Demo说明
 AndroidDemo工程，展示了Appluck建议的接入方式、时机和位置
-![avatar](https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/blob/main/doc/index.jpg)
+![avatar](https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/blob/main/doc/index_android.jpg)
 
 这是一个典型的App场景，包含了浮标位入口、触发激励视频的按钮
 
