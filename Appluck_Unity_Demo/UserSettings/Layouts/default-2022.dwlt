@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 32934
+  controlID: 132
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 32879
+  controlID: 40
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 32880
+  controlID: 41
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -215,8 +215,8 @@ MonoBehaviour:
     y: 0
     width: 1173.6
     height: 564
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 15}
@@ -439,9 +439,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: aa5b0000
       m_LastClickedID: 0
-      m_ExpandedIDs: e237feff1a38feff9439feff643ffeffb03ffeff5041feffc2b7feffaec8feffe6c8feff8ccafeff0acffeffbeddfefff4ddfeff9cdffeff22e7feff58e7fefffee8feff7a40ffffb240ffff6042ffff4e49ffff8649ffff2c4bffffec63ffff2664ffffb865ffff0e6dffff466dffffd46effff2678ffffa07effff3e83ffffca95ffff0296ffff9897ffffc29dfffffa9dffff909fffffc2d2ffff00d3ffff46d4ffffdae0ffff74e6ffff3ee8ffffb4e8ffff26fbfffff4fffffffe580000c4640000ce640000e6640000086500001a65000024650000066f0000286f0000a0700000c2700000b8720000da7200000c770000528000008a800000b4830000c6830000ec830000168400003a84000044840000dc950000149600003e9600006c960000e6a0000008a100004ca600006ea6000090a60000aca60000b6a600006aad000074ad00008cad0000b2ad0000c2ad000002b3000030b30000
+      m_ExpandedIDs: 1afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -991,7 +991,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Images
+    - Assets/Plugins/Android
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -999,16 +999,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 71
   m_LastFolders:
-  - Assets/Images
+  - Assets/Plugins/Android
   m_LastFoldersGridSize: 71
   m_LastProjectPath: E:\appluck\Best-practices-for-Appluck-in-Unity\Appluck_Unity_Demo
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: dcad0000
-    m_LastClickedID: 44508
-    m_ExpandedIDs: 000000002c590000
+    m_SelectedIDs: a65b0000
+    m_LastClickedID: 23462
+    m_ExpandedIDs: 000000004e5b0000625b00009a5b0000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1036,7 +1036,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002c59000070880000
+    m_ExpandedIDs: 000000004e5b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
