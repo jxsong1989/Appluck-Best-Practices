@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.appluck.appluck_android_demo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +17,7 @@
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="1n01ilZ9JQclLQLMrrk5sQUcTPJoSbgCFKaQzvT4RqEQv88-UNmW31T_TPxm4wuBpCqLtQ66b5vc5ltMZcWGFp" />
     </application>
 
 </manifest>

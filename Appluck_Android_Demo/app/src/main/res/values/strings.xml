@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Appluck_Android_Demo</string>
+    <string name="icon_margin_left">10dp</string>
+    <string name="icon_margin_top">60dp</string>
+    <string name="icon_width">50dp</string>
+    <string name="icon_height">50dp</string>
 </resources>
