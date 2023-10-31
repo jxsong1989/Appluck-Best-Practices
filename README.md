@@ -17,6 +17,6 @@ https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/tree/main/Appl
 <br/>
 
 ## 相关资源请移步
-https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/releases/tag/v1
+https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/releases/tag/v1.0.0
 
 
