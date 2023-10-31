@@ -6,17 +6,17 @@
 
 <br/>
 
-## Unity版本请移步
+## Unity版本
 https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/tree/main/Appluck_Unity_Demo
 
 <br/>
 
-## Android版本请移步
+## Android版本
 https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/tree/main/Appluck_Android_Demo
 
 <br/>
 
-## 相关资源请移步
+## 相关资源
 https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/releases/tag/v1.0.0
 
 
