@@ -103,7 +103,9 @@ public class MainActivity extends AppCompatActivity {
                 //closeMode 0:关闭; 1:网页返回;
                 LigthWebview.open(this, appluck_placement_url, 0);
                 //继续加载视频广告
-                rewardedAd.loadAd();
+                if(rewardedAd != null){
+                    rewardedAd.loadAd();
+                }
             }
         });
     }
