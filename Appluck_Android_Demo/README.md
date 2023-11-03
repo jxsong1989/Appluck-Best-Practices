@@ -159,7 +159,7 @@ Appluck是由h5实现的活动集合，在游戏中打开Appluck时需要使用W
   ```
   
 + WebView打开浏览器的支持
-  一些兼容性较差的广告需要通过浏览器打开，Appluck约定了url参数中包含参数lz_open_browser=1时需跳出应用通过浏览器打开，参考代码
+  Appluck部分广告需要使用外部浏览器打开，这些广告的URL中会包含参数lz_open_browser=1。开发者判断用户打开URL包含这个参数时，启动浏览器来处理链接。参考代码
   
   ```java
    webView.setWebViewClient(new WebViewClient() {
