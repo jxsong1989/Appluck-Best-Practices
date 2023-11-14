@@ -56,7 +56,7 @@ The following sections introduce the most effective integration methods that hav
 
 ## Appluck_Android_Demo Explanation
 The AndroidDemo project demonstrates the recommended integration methods, timing, and positions for Appluck.
-![avatar](https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/blob/main/doc/index_android.jpg)
+![avatar](https://raw.githubusercontent.com/jxsong1989/Appluck-Best-Practices/main/doc/index_android.jpg)
 
 This is a typical app scenario that includes a floating button entry and a button triggering a rewarded video.
 
