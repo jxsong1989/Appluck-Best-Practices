@@ -1,84 +1,107 @@
-# Appluck Best Practices - Android Version
+# Appluck最佳实践-Android版本
 
-[Github Repository](https://github.com/jxsong1989/Appluck-Best-Practices/edit/main/Appluck_Android_Demo)
+[中文](https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README-CN.md) | [English](https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README.md)
 <br/>
-This project represents the best practices for integrating Appluck, providing developers with a reference implementation. For any questions, please contact the designated personnel.
-
+[Github地址](https://github.com/jxsong1989/Appluck-Best-Practices/edit/main/Appluck_Android_Demo)
 <br/>
-
-## Introduction
-Appluck offers developers a new H5 monetization solution that generates incremental revenue without affecting the original in-game ads. The sources of incremental revenue include:
-
-1. **New** non-standard ad placements, such as floating buttons/icons, push notifications, etc.
-2. **Replacement** of standard ad placements with low monetization efficiency, such as late-exposure rewarded videos.
-3. **Fallback** for standard ad placements with no fill/cannot load, such as video loading failures.
-
-Best practices address developers' concerns:
-
-**1. How to ensure that the exposure/income of existing ads does not decrease when adding new ad placements?**
-
-- When adding new ad placements, the income from existing ads may slightly decrease, but the total revenue will significantly increase.
-
-**2. How to ensure that the income after replacing standard ad placements is higher than before replacement?**
-
-- When replacing ad placements, best practices recommend a replacement frequency that significantly increases total revenue.
-
-The following sections introduce the most effective integration methods that have been verified through rigorous A/B testing.
+本项目为Appluck集成的最佳实践，开发者可借鉴参考。
+若有疑问请与对接人员联系。
 
 <br/>
 
-## Integration Process
+## 介绍
+Appluck为开发者提供新的h5变现解决方案，在不影响游戏原有广告的基础上，做出增量收入。
+增量收入的来源：
 
-### Operational Integration
+1. **新增** 非标广告位：如浮标/icon，推送等形式。
+2. **替换** 变现效率低的标准广告位：如曝光次序靠后的激励视频等。
+3. **兜底** 无填充/无法加载的标准广告位：如视频加载失败等。
 
-1. Developers provide the application package name and ad placements to be integrated.
-2. Appluck staff provide the corresponding links for each ad placement.
 
-### Development Integration
 
-1. Developers add or replace ad placements according to their requirements, opening the corresponding webpage using the guidance in the **WebView Technical Details** section.
-   > The Appluck URL format is https://domain/scene?sk=xxxxxxxxxxxxxx&lzdid={gaid}
-   >
-   > + domain is the domain assigned to you by Appluck.
-   >
-   > + xxxxxxxxxxxxxx is the ad placement ID.
-   >
-   > + {gaid} is a macro that should be replaced with the user's Google Advertising ID when used.
-   >
-   > Example: The final URL to open will be like: https://aios.soinluck.com/scene?sk=q842c2e079a1b32c8&lzdid=228b9b29-784f-4181-bbc9-28cd14f672f4
+最佳实践可解答开发者的疑惑：
 
-2. **Use integration test links to verify the compatibility of various redirects.**
+**1. 新增广告位会影响用户注意力，如何能保证原有广告的曝光/收入等没有下降？**
+
+- 在新增广告位时，原有的广告收入可能略微降低，但总收入会显著提升
+
+**2. 替换标准广告展现机会，如何能保证替换后的收入高于替换之前？**
+- 在替换广告位时，最佳实践建议的替换频次是对总收入有显著提升的频次。
+
+
+下文我们将介绍已被验证过最有效的接入方式，每种方式都经历严格的AB测试。  
+
+
+
+
 
 <br/>
 
-## Appluck_Android_Demo Explanation
-The AndroidDemo project demonstrates the recommended integration methods, timing, and positions for Appluck.
+## 接入流程
+
+### 运营对接
+
+1. 开发者提供需要接入的应用包名、广告位。
+
+2. Appluck工作人员提供每个广告位对应的广告位链接。
+
+
+### 开发接入
+
+1. 开发按照己方要求进行新增/替换广告位，根据下文的  **WebView技术细节** 指导，打开对应的网页
+   > Appluck Url 格式为 https://domain/scene?sk=xxxxxxxxxxxxxx&lzdid={gaid}
+   >
+   > + domain为Appluck为您分配的域名
+   >
+   > + xxxxxxxxxxxxxx为广告位ID
+   >
+   > + {gaid}是一个宏，实际使用时需将{gaid}整体替换为用户的Google Advertising ID
+   >
+   > 例：最终打开的url如： https://aios.soinluck.com/scene?sk=q842c2e079a1b32c8&lzdid=228b9b29-784f-4181-bbc9-28cd14f672f4
+
+2. **使用集成测试链接验证各种跳转是否已完美兼容**
+
+
+
+
+<br/>
+
+## Appluck_Android_Demo说明
+AndroidDemo工程，展示了Appluck建议的接入方式、时机和位置
 ![avatar](https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/blob/main/doc/index_android.jpg)
 
-This is a typical app scenario that includes a floating button entry and a button triggering a rewarded video.
+这是一个典型的App场景，包含了浮标位入口、触发激励视频的按钮
 
-#### 1. Floating Button Placement
+#### 1. 浮标位
 
-Here, the demo uses Appluck's API to dynamically fetch recommended floating button materials, keeping a replacement frequency of 30 seconds. This optimizes the click-through rate of materials. If you have specific requirements, you can also use fixed materials.
+此处使用了Appluck提供的浮标素材获取API 来动态获取推荐的浮标素材，并保持30秒的替换频率。这样可以极致优化素材的点击率。如有特殊要求，您也可以使用固定的素材。
 
-#### 2. Rewarded Video
+#### 2. 激励视频
 
-In the demo, the second rewarded video is replaced with an Appluck activity. The eCPM of the second rewarded video is significantly lower than the first, showcasing Appluck's advantage in eCPM. If you have concerns about revenue, you can fine-tune operations, control replacement frequency from the backend, and conduct A/B testing to compare revenue.
+demo中将第2次激励视频替换为Appluck活动。
+第2次激励视频的eCPM是显著低于第1次的，这也是Appluck eCPM有优势的位置。
+若您对收益有疑虑，可精细化运营，从后端控制替换频次，并做AB测试来对比收益。
 
-The demo also changes the handling of ad loading failures to open an Appluck activity. This replacement is entirely incremental income and can be modified with confidence.
+demo中也将广告加载失败的处理改为打开Appluck活动。
+这样的替换完全是增量收入，可放心修改。
+
+
+
 
 <br/>
 
-## Must-Read - WebView Technical Details
+## 必看-WebView技术细节
 
-Appluck activities are implemented using H5 and need to be loaded in a WebView when opened in a game. Because of the rich and diverse upstream ad budget on Appluck, the WebView itself needs to support certain protocols for redirects; otherwise, redirecting to ads may fail. Additionally, some responses need to be implemented for user backward behavior to prevent accidental exits from the WebView.
+Appluck是由h5实现的活动集合，在游戏中打开Appluck时需要使用WebView承载。由于Appluck上游广告预算的丰富多样，WebView本身需要对一些跳转的协议进行支持，否则会出现跳转广告失败的问题。除此之外，还需要对用户的后退行为等做一些响应，防止误操作退出WebView。
 
-In the actual integration process, you need to encapsulate the WebView yourself to accomplish the necessary compatibility for Appluck.
+在实际集成过程中，您需要自行封装WebView，以完成Appluck必须的一些兼容。
 
-#### Compatibility Requirements and Implementation
 
-+ WebView support for URL protocols
-  + Market link
+
+#### 兼容要求及实现方式
+
++ WebView对Url协议头的支持
+  + market链接
     ```java
     if (url.startsWith("market:")
                 || url.startsWith("https://play.google.com/store/")
@@ -96,7 +119,7 @@ In the actual integration process, you need to encapsulate the WebView yourself 
         return true;
     }
     ```
-  + APK download
+  + apk下载
     ```java
     webView.setDownloadListener((url, userAgent, contentDisposition, mimetype, contentLength) -> {
         Uri uri = Uri.parse(url);
@@ -105,7 +128,7 @@ In the actual integration process, you need to encapsulate the WebView yourself 
         startActivity(intent);
     });
     ```
-  + Others
+  + 其他
     ```java
     Intent intent = new Intent(Intent.ACTION_VIEW);
     ActivityInfo activityInfo = intent.resolveActivityInfo(context.getPackageManager(), 0);
@@ -115,14 +138,14 @@ In the actual integration process, you need to encapsulate the WebView yourself 
         context.startActivity(intent);
     }
     ```
- + WebView support for HTTP links
-    + Add configuration to the application node in AndroidManifest.xml
+ + WebView对http链接的支持
+    + AndroidManifest.xml中application节点添加配置
       ```java
       android:usesCleartextTraffic="true"
       ```
-    + If HTTP is explicitly not supported, consult Appluck's operations.
-+ WebView support for webpage backward navigation
-  Support webpage navigation backward instead of directly closing the page; refer to the code:
+    + 如明确不支持http，请与Appluck运营说明
++ WebView网页后退的支持
+  请支持网页的后退而不是直接关闭页面，参考代码
   
   ```java
   @Override
@@ -133,14 +156,14 @@ In the actual integration process, you need to encapsulate the WebView yourself 
       }
       if (webView.canGoBack()) {
           webView.goBack();
-      else {
+      } else {
           super.onBackPressed();
       }
   }
-  ```java
-
-+ WebView Support for Opening the Browser.
-  Some Appluck ads require opening in an external browser, and these ads' URLs will include the parameter lz_open_browser=1. Developers should detect this parameter in the URL and, when present, launch the browser to handle the link. Reference code:
+  ```
+  
++ WebView打开浏览器的支持
+  Appluck部分广告需要使用外部浏览器打开，这些广告的URL中会包含参数lz_open_browser=1。开发者判断用户打开URL包含这个参数时，启动浏览器来处理链接。参考代码
   
   ```java
    webView.setWebViewClient(new WebViewClient() {
@@ -151,16 +174,16 @@ In the actual integration process, you need to encapsulate the WebView yourself 
               try {
                   if (url.contains("lz_open_browser=1")) {
                        if (isAppInstalled(context, "com.android.chrome")) {
-                          // Create an Intent specifying the ACTION_VIEW action and URL
+                          // 创建一个 Intent，指定 ACTION_VIEW 动作和 URL
                           Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                          // Specify the package name of the browser to use
-                          intent.setPackage("com.android.chrome"); // Package name for Chrome browser
-                          // Start Chrome browser to handle the link
+                          // 指定要使用的浏览器的包名
+                          intent.setPackage("com.android.chrome"); // Chrome 浏览器的包名
+                          // 启动 Chrome 浏览器来处理链接
                           context.startActivity(intent);
                       } else {
-                          // If Chrome browser is not installed, use the default system browser to open the link
+                          // 如果没有安装 Chrome 浏览器，使用系统默认浏览器打开链接
                           Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                          // Start the default browser to handle the link
+                          // 启动默认浏览器来处理链接
                           context.startActivity(intent);
                       }
                       return true;
@@ -184,17 +207,23 @@ In the actual integration process, you need to encapsulate the WebView yourself 
           return false;
       }
   }
- ```java
+  ```
 
 
-Due to the extensive content, Appluck provides a testing solution.
 
-#### Compatibility Testing
+由于内容较多，Appluck提供了测试方案
 
-Open the link https://aios.soinluck.com/scene?sk=q842925369bb6199f&lzdid={gaid} in your pre-packaged WebView.
+#### 兼容测试
 
-The link provides:
+请在您已封装好的WebView中打开链接  https://aios.soinluck.com/scene?sk=q842925369bb6199f&lzdid={gaid}
 
-1. Parameter testing - The webpage attempts to read your parameters, and if the parameter format is incorrect, a prompt will be displayed.
+链接中提供了
 
-2. Redirect testing - Links for various typical redirect methods are provided. Click on each one and confirm correct redirect results.
+1. 传参测试 - 网页尝试读取您的传参，若传参格式有误会有提醒。
+
+2. 跳转测试 - 提供了多种典型跳转方式的链接，逐一点击并确认得到正确的跳转结果。
+
+
+
+
+
