@@ -140,7 +140,7 @@ In the actual integration process, you need to encapsulate the WebView yourself 
           super.onBackPressed();
       }
   }
-  ```java
+  ```
 
 + WebView Support for Opening the Browser.
   Some Appluck ads require opening in an external browser, and these ads' URLs will include the parameter lz_open_browser=1. Developers should detect this parameter in the URL and, when present, launch the browser to handle the link. Reference code:
@@ -187,7 +187,7 @@ In the actual integration process, you need to encapsulate the WebView yourself 
           return false;
       }
   }
- ```java
+ ```
 
 
 Due to the extensive content, Appluck provides a testing solution.
