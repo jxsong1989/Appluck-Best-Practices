@@ -69,7 +69,7 @@ Appluck为开发者提供新的h5变现解决方案，在不影响游戏原有�
 
 ## Appluck_Unity_Demo说明
 UnityDemo工程，展示了Appluck建议的接入方式、时机和位置
-![avatar](https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/blob/main/doc/index.jpg)
+![avatar](https://raw.githubusercontent.com/jxsong1989/Appluck-Best-Practices/main/doc/index.jpg)
 
 这是一个典型的游戏场景，包含了游戏积分(Gold部分)、增加积分的按钮(Add Gold) 以及几个触发广告的入口
 
