@@ -2,7 +2,7 @@
 
 [中文](https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README-CN.md) 
 <br/>
-<br/>
+
 [Github Repository](https://github.com/jxsong1989/Appluck-Best-Practices/edit/main/Appluck_Android_Demo)
 <br/>
 This project represents the best practices for integrating Appluck, providing developers with a reference implementation. For any questions, please contact the designated personnel.
