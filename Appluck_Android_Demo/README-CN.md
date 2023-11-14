@@ -1,6 +1,6 @@
 # Appluck最佳实践-Android版本
 
-[中文](https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README-CN.md) | [English](https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README.md)
+[English](https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README.md) | [中文](https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README-CN.md) 
 <br/>
 <br/>
 [Github地址](https://github.com/jxsong1989/Appluck-Best-Practices/edit/main/Appluck_Android_Demo)
