@@ -60,7 +60,9 @@ public class MainCtrl : MonoBehaviour
             LightWebviewAndroid.instance.open(appluck_url, CloseMode.back);
         });
 
+        //触发激励视频
         max_reward.onClick.AddListener(() => {
+            //用户激励次数+1
             reward_times += 1;
             if (reward_times == 2) {
                 //将用户第二次激励视频替换为Appluck
