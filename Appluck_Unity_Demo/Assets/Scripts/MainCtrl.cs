@@ -63,6 +63,7 @@ public class MainCtrl : MonoBehaviour
         max_reward.onClick.AddListener(() => {
             reward_times += 1;
             if (reward_times == 2) {
+                //将用户第二次激励视频替换为Appluck
                 LightWebviewAndroid.instance.open(appluck_url, CloseMode.back);
                 toast("Show Appluck instead of the 2nd rewarded video");
             }
@@ -73,6 +74,7 @@ public class MainCtrl : MonoBehaviour
                     MaxSdk.ShowRewardedAd(MaxConfig.reward_unit_id);
                 }
                 else {
+                    //当激励视频加载失败时展示Appluck
                     LightWebviewAndroid.instance.open(appluck_url, CloseMode.back);
                     toast("Ad load failed , showing Appluck");
                 }
