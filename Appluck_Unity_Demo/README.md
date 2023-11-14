@@ -52,7 +52,7 @@ Below, we will introduce the most effective integration methods that have been r
 
 ## Appluck_Unity_Demo Explanation
 UnityDemo project demonstrates the recommended integration methods, timing, and locations suggested by Appluck.
-![avatar](https://github.com/jxsong1989/Best-practices-for-Appluck-in-Unity/blob/main/doc/index.jpg)
+![avatar](https://raw.githubusercontent.com/jxsong1989/Appluck-Best-Practices/main/doc/index.jpg)
 
 This is a typical game scene, including the game's score (Gold section), a button to add points (Add Gold), and several entrances to trigger ads.
 
