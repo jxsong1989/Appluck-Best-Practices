@@ -1,6 +1,6 @@
 # Appluck Best Practices - Unity Version
 
-[中文](https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README-CN.md) 
+[中文](https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Unity_Demo/README-CN.md) 
 <br/>
 <br/>
 [Github Link](https://github.com/jxsong1989/Appluck-Best-Practices/edit/main/Appluck_Unity_Demo)
