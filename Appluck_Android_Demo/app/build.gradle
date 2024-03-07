@@ -1,14 +1,15 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.appluck.appluck_android_demo"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -46,6 +47,10 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.1.72.android'
 
     implementation 'org.jsoup:jsoup:1.11.2'
+
+    implementation platform('com.google.firebase:firebase-bom:32.7.3')
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
 
     implementation fileTree(dir: 'libs', includes: ['*.jar', '*.aar'])
 }

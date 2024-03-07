@@ -4,4 +4,5 @@
     <string name="icon_margin_top">60dp</string>
     <string name="icon_width">50dp</string>
     <string name="icon_height">50dp</string>
+    <string name="msg_token_fmt">FCM registration token: %1$s</string>
 </resources>

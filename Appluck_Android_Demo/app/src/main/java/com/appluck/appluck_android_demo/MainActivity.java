@@ -1,10 +1,13 @@
 package com.appluck.appluck_android_demo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -17,6 +20,9 @@ import com.applovin.mediation.ads.MaxRewardedAd;
 import com.applovin.sdk.AppLovinSdk;
 import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.lightwebviewsdk.LigthWebview;
 
 import org.jsoup.Connection;
@@ -46,6 +52,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //处理FCM内容
+        final Intent intent = getIntent();
+        if (intent != null) {
+            //如果消息参数中包含url（可以自定义参数）
+            //这里约定只能是Appluck的placement url
+            final String url = intent.getStringExtra("url");
+            if (url != null) {
+                LigthWebview.open(this, url.replace("{gaid}", gaid));
+            }
+        }
+        //初始化FCM并获取TOKEN
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                        String msg = getString(R.string.msg_token_fmt, token);
+                        Log.d("appluck_demo", msg);
+                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
         ThreadPool.execute(() -> {
             try {
                 //获取Appluck广告位素材
@@ -103,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                 //closeMode 0:关闭; 1:网页返回;
                 LigthWebview.open(this, appluck_placement_url, 0);
                 //继续加载视频广告
-                if(rewardedAd != null){
+                if (rewardedAd != null) {
                     rewardedAd.loadAd();
                 }
             }
@@ -112,7 +147,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 定时切换浮标位素材
-     * @param icon 浮标位
+     *
+     * @param icon  浮标位
      * @param mills 切换间隔时间,毫秒
      */
     public void showIconDelayed(ImageView icon, long mills) {
