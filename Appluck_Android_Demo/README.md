@@ -70,6 +70,22 @@ In the demo, the second rewarded video is replaced with an Appluck activity. The
 
 The demo also changes the handling of ad loading failures to open an Appluck activity. This replacement is entirely incremental income and can be modified with confidence.
 
+#### 3. Firebase Cloud Message
+![avatar](https://raw.githubusercontent.com/jxsong1989/Appluck-Best-Practices/main/doc/fcm.jpg)
+
+As per the Firebase Cloud Messaging (FCM) document found at [FCM]([https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README-CN.md](https://firebase.google.com/docs/cloud-messaging/android/client)) , add the following code in the onCreate of MainActivity to handle the scenarios of entering the app from notification.
+```java
+   // Handle FCM content
+   final Intent intent = getIntent();
+   if (intent != null) {
+      // If URL is included in the message parameters (parameters can be customized)
+      // Here it is agreed that it can only be the placement URL of Appluck
+      final String url = intent.getStringExtra("url");
+      if (url != null) {
+          //TODO Open the URL in WebView
+      }
+   }
+```
 <br/>
 
 ## Must-Read - WebView Technical Details
