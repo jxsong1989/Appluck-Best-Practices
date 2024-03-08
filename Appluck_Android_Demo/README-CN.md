@@ -86,7 +86,21 @@ demo中将第2次激励视频替换为Appluck活动。
 demo中也将广告加载失败的处理改为打开Appluck活动。
 这样的替换完全是增量收入，可放心修改。
 
+#### 3. 消息推送
+![avatar](https://raw.githubusercontent.com/jxsong1989/Appluck-Best-Practices/main/doc/fcm.jpg)
 
+接入[FCM](https://firebase.google.com/docs/cloud-messaging/android/client?hl=zh-cn)(Firebase Cloud Message), 在MainActivity的onCreate方法中添加以下代码以处理通过推送消息进入应用的场景.
+```java
+   // 处理FCM
+   final Intent intent = getIntent();
+   if (intent != null) {
+      // 获取消息中的自定义参数，这里约定为'url',该参数可自定义
+      final String url = intent.getStringExtra("url");
+      if (url != null) {
+          //TODO Open the URL in WebView
+      }
+   }
+```
 
 
 <br/>
