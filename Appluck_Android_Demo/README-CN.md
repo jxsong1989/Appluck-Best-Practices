@@ -97,7 +97,7 @@ demo中也将广告加载失败的处理改为打开Appluck活动。
       // 获取消息中的自定义参数，这里约定为'url',该参数可自定义
       final String url = intent.getStringExtra("url");
       if (url != null) {
-          //TODO Open the URL in WebView
+          //TODO 使用webview打开url
       }
    }
 ```
