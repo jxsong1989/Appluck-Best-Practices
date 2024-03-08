@@ -73,7 +73,7 @@ The demo also changes the handling of ad loading failures to open an Appluck act
 #### 3. Firebase Cloud Message
 ![avatar](https://raw.githubusercontent.com/jxsong1989/Appluck-Best-Practices/main/doc/fcm.jpg)
 
-As per the Firebase Cloud Messaging (FCM) document found at [FCM]([https://github.com/jxsong1989/Appluck-Best-Practices/blob/main/Appluck_Android_Demo/README-CN.md](https://firebase.google.com/docs/cloud-messaging/android/client)) , add the following code in the onCreate of MainActivity to handle the scenarios of entering the app from notification.
+Integrating [FCM](https://firebase.google.com/docs/cloud-messaging/android/client) , add the following code in the onCreate of MainActivity to handle the scenarios of entering the app from notification.
 ```java
    // Handle FCM content
    final Intent intent = getIntent();
