@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "289170022961",
+    "project_id": "alunitydemo",
+    "storage_bucket": "alunitydemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289170022961:android:d2c1febcb9bb53c277ab10",
+        "android_client_info": {
+          "package_name": "com.appluck.demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzT4TakTorvv880j-fYY-6nl1uVBpY7Ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

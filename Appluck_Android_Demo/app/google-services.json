@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840158664367",
+    "project_id": "aldemo-97497",
+    "storage_bucket": "aldemo-97497.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840158664367:android:98cea7d98d0a4db043265a",
+        "android_client_info": {
+          "package_name": "com.appluck.appluck_android_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-ic4jmbJTjnuHS1_aOBRLqZ_nnp0eyN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

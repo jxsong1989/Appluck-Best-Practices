@@ -94,7 +94,9 @@ public class MainCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        toast("start");
+        Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
+        toast("firebase message init success");
     }
 
     // Update is called once per frame
@@ -203,5 +205,10 @@ public class MainCtrl : MonoBehaviour
             Toast.CallStatic<AndroidJavaObject>("makeText", context, text, Toast.GetStatic<int>("LENGTH_SHORT")).Call("show");
         }
         ));
+    }
+
+    public void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token)
+    {
+        UnityEngine.Debug.Log("firebase Received Registration Token: " + token.Token);
     }
 }
