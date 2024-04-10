@@ -284,35 +284,62 @@ In this case, you need to achieve some compatibility required by Appluck.
   Some Appluck ads require opening in an external browser, and these ads' URLs will include the parameter lz_open_browser=1. Developers should detect this parameter in the URL and, when present, launch the browser to handle the link. Reference code:
   
   ```java
-   webView.setWebViewClient(new WebViewClient() {
-      @Override
-      public boolean shouldOverrideUrlLoading(@NonNull WebView view, @NonNull WebResourceRequest request) {
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-              String url = request.getUrl().toString();
-              try {
-                  if (url.contains("lz_open_browser=1")) {
-                       if (isAppInstalled(context, "com.android.chrome")) {
-                          // Create an Intent specifying the ACTION_VIEW action and URL
-                          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                          // Specify the package name of the browser to use
-                          intent.setPackage("com.android.chrome"); // Package name for Chrome browser
-                          // Start Chrome browser to handle the link
-                          context.startActivity(intent);
-                      } else {
-                          // If Chrome browser is not installed, use the default system browser to open the link
-                          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                          // Start the default browser to handle the link
-                          context.startActivity(intent);
-                      }
-                      return true;
-                  }
-              } catch (Throwable e) {
-                  return true;
-              }
-          }
-          return super.shouldOverrideUrlLoading(view, request);
-      }
-  });
+   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+   	webView.setWebViewClient(new WebViewClient() {
+   		@Override
+   		public boolean shouldOverrideUrlLoading(@NonNull WebView view, @NonNull WebResourceRequest request) {
+   			String url = request.getUrl().toString();
+   			try {
+   				if (url.contains("lz_open_browser=1")) {
+   					if (isAppInstalled(context, "com.android.chrome")) {
+   						// Create an Intent specifying the ACTION_VIEW action and URL
+   						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+   						// Specify the package name of the browser to use
+   						intent.setPackage("com.android.chrome"); // Package name for Chrome browser
+   						// Start Chrome browser to handle the link
+   						context.startActivity(intent);
+   					} else {
+   						// If Chrome browser is not installed, use the default system browser to open the link
+   						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+   						// Start the default browser to handle the link
+   						context.startActivity(intent);
+   					}
+   					return true;
+   				}
+   			} catch (Throwable e) {
+   				return true;
+   			}
+   			return super.shouldOverrideUrlLoading(view, request);
+   		}
+   	});
+   } else {
+   	webView.setWebViewClient(new WebViewClient() {
+   		@Override
+   		public boolean shouldOverrideUrlLoading(@NonNull WebView view, String url) {
+   			try {
+   				if (url.contains("lz_open_browser=1")) {
+   					if (isAppInstalled(context, "com.android.chrome")) {
+   						// Create an Intent specifying the ACTION_VIEW action and URL
+   						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+   						// Specify the package name of the browser to use
+   						intent.setPackage("com.android.chrome"); // Package name for Chrome browser
+   						// Start Chrome browser to handle the link
+   						context.startActivity(intent);
+   					} else {
+   						// If Chrome browser is not installed, use the default system browser to open the link
+   						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+   						// Start the default browser to handle the link
+   						context.startActivity(intent);
+   					}
+   					return true;
+   				}
+   			} catch (Throwable e) {
+   				return true;
+   			}
+   			return super.shouldOverrideUrlLoading(view, url);
+   		}
+   	});
+   }
   
   public static boolean isAppInstalled(Context context, String packageName) {
       if (packageName == null || packageName.length() <= 0) {
