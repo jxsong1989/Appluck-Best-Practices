@@ -181,35 +181,62 @@ Appluck是由h5实现的活动集合，在游戏中打开Appluck时需要使用W
   Appluck部分广告需要使用外部浏览器打开，这些广告的URL中会包含参数lz_open_browser=1。开发者判断用户打开URL包含这个参数时，启动浏览器来处理链接。参考代码
   
   ```java
-   webView.setWebViewClient(new WebViewClient() {
-      @Override
-      public boolean shouldOverrideUrlLoading(@NonNull WebView view, @NonNull WebResourceRequest request) {
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-              String url = request.getUrl().toString();
-              try {
-                  if (url.contains("lz_open_browser=1")) {
-                       if (isAppInstalled(context, "com.android.chrome")) {
-                          // 创建一个 Intent，指定 ACTION_VIEW 动作和 URL
-                          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                          // 指定要使用的浏览器的包名
-                          intent.setPackage("com.android.chrome"); // Chrome 浏览器的包名
-                          // 启动 Chrome 浏览器来处理链接
-                          context.startActivity(intent);
-                      } else {
-                          // 如果没有安装 Chrome 浏览器，使用系统默认浏览器打开链接
-                          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                          // 启动默认浏览器来处理链接
-                          context.startActivity(intent);
-                      }
-                      return true;
-                  }
-              } catch (Throwable e) {
-                  return true;
-              }
-          }
-          return super.shouldOverrideUrlLoading(view, request);
-      }
-  });
+   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+   	webView.setWebViewClient(new WebViewClient() {
+   		@Override
+   		public boolean shouldOverrideUrlLoading(@NonNull WebView view, @NonNull WebResourceRequest request) {
+   			String url = request.getUrl().toString();
+   			try {
+   				if (url.contains("lz_open_browser=1")) {
+   					if (isAppInstalled(context, "com.android.chrome")) {
+   						// Create an Intent specifying the ACTION_VIEW action and URL
+   						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+   						// Specify the package name of the browser to use
+   						intent.setPackage("com.android.chrome"); // Package name for Chrome browser
+   						// Start Chrome browser to handle the link
+   						context.startActivity(intent);
+   					} else {
+   						// If Chrome browser is not installed, use the default system browser to open the link
+   						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+   						// Start the default browser to handle the link
+   						context.startActivity(intent);
+   					}
+   					return true;
+   				}
+   			} catch (Throwable e) {
+   				return true;
+   			}
+   			return super.shouldOverrideUrlLoading(view, request);
+   		}
+   	});
+   } else {
+   	webView.setWebViewClient(new WebViewClient() {
+   		@Override
+   		public boolean shouldOverrideUrlLoading(@NonNull WebView view, String url) {
+   			try {
+   				if (url.contains("lz_open_browser=1")) {
+   					if (isAppInstalled(context, "com.android.chrome")) {
+   						// Create an Intent specifying the ACTION_VIEW action and URL
+   						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+   						// Specify the package name of the browser to use
+   						intent.setPackage("com.android.chrome"); // Package name for Chrome browser
+   						// Start Chrome browser to handle the link
+   						context.startActivity(intent);
+   					} else {
+   						// If Chrome browser is not installed, use the default system browser to open the link
+   						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+   						// Start the default browser to handle the link
+   						context.startActivity(intent);
+   					}
+   					return true;
+   				}
+   			} catch (Throwable e) {
+   				return true;
+   			}
+   			return super.shouldOverrideUrlLoading(view, url);
+   		}
+   	});
+   }
   
   public static boolean isAppInstalled(Context context, String packageName) {
       if (packageName == null || packageName.length() <= 0) {
